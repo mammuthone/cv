@@ -1,56 +1,7 @@
-/*
-	Miniport by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
-(function($) {
-
-	skel.init({
-		reset: 'full',
-		breakpoints: {
-			'global':	{ range: '*', href: 'css/style.css' },
-			'desktop':	{ range: '641-', href: 'css/style-desktop.css', containers: 1200, grid: { gutters: 25 } },
-			'1000px':	{ range: '641-1200', href: 'css/style-1000px.css', containers: 960, grid: { gutters: 25 }, viewport: { width: 1080 } },
-			'mobile':	{ range: '-640', href: 'css/style-mobile.css', containers: '100%', grid: { collapse: true, gutters: 10 }, viewport: { scalable: false } }
-		}
-	});
-
-	$(function() {
-
-		var	$window = $(window),
-			$body = $('body');
-			
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
-			
-			$window.on('load', function() {
-				$body.removeClass('is-loading');
-			});
-			
-		// Forms (IE<10).
-			var $form = $('form');
-			if ($form.length > 0) {
-				
-				if (skel.vars.IEVersion < 10) {
-					$.fn.n33_formerize=function(){var _fakes=new Array(),_form = $(this);_form.find('input[type=text],textarea').each(function() { var e = $(this); if (e.val() == '' || e.val() == e.attr('placeholder')) { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).blur(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).focus(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); _form.find('input[type=password]').each(function() { var e = $(this); var x = $($('<div>').append(e.clone()).remove().html().replace(/type="password"/i, 'type="text"').replace(/type=password/i, 'type=text')); if (e.attr('id') != '') x.attr('id', e.attr('id') + '_fakeformerizefield'); if (e.attr('name') != '') x.attr('name', e.attr('name') + '_fakeformerizefield'); x.addClass('formerize-placeholder').val(x.attr('placeholder')).insertAfter(e); if (e.val() == '') e.hide(); else x.hide(); e.blur(function(event) { event.preventDefault(); var e = $(this); var x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } }); x.focus(function(event) { event.preventDefault(); var x = $(this); var e = x.parent().find('input[name=' + x.attr('name').replace('_fakeformerizefield', '') + ']'); x.hide(); e.show().focus(); }); x.keypress(function(event) { event.preventDefault(); x.val(''); }); });  _form.submit(function() { $(this).find('input[type=text],input[type=password],textarea').each(function(event) { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) e.attr('name', ''); if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); }).bind("reset", function(event) { event.preventDefault(); $(this).find('select').val($('option:first').val()); $(this).find('input,textarea').each(function() { var e = $(this); var x; e.removeClass('formerize-placeholder'); switch (this.type) { case 'submit': case 'reset': break; case 'password': e.val(e.attr('defaultValue')); x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } else { e.show(); x.hide(); } break; case 'checkbox': case 'radio': e.attr('checked', e.attr('defaultValue')); break; case 'text': case 'textarea': e.val(e.attr('defaultValue')); if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } break; default: e.val(e.attr('defaultValue')); break; } }); window.setTimeout(function() { for (x in _fakes) _fakes[x].trigger('formerize_sync'); }, 10); }); return _form; };
-					$form.n33_formerize();
-				}
-
-			}
-		
-		// CSS polyfills (IE<9).
-			if (skel.vars.IEVersion < 9)
-				$(':last-child').addClass('last-child');
-
-		// Scrolly.
-			$window.load(function() {
-
-				var x = parseInt($('.wrapper').first().css('padding-top')) - 15;
-				$('#nav a, .scrolly').scrolly(1000, x);
-
-			});
-		
-	});
-
-})(jQuery);
+(function(b){skel.init({reset:"full",breakpoints:{global:{range:"*",href:"css/style.css"},desktop:{range:"641-",href:"css/style-desktop.css",containers:1200,grid:{gutters:25}},"1000px":{range:"641-1200",href:"css/style-1000px.css",containers:960,grid:{gutters:25},viewport:{width:1080}},mobile:{range:"-640",href:"css/style-mobile.css",containers:"100%",grid:{collapse:!0,gutters:10},viewport:{scalable:!1}}}});b(function(){var f=b(window),g=b("body");g.addClass("is-loading");f.on("load",function(){g.removeClass("is-loading")});
+var h=b("form");0<h.length&&10>skel.vars.IEVersion&&(b.fn.n33_formerize=function(){var d=[],e=b(this);e.find("input[type=text],textarea").each(function(){var a=b(this);if(""==a.val()||a.val()==a.attr("placeholder"))a.addClass("formerize-placeholder"),a.val(a.attr("placeholder"))}).blur(function(){var a=b(this);a.attr("name").match(/_fakeformerizefield$/)||""!=a.val()||(a.addClass("formerize-placeholder"),a.val(a.attr("placeholder")))}).focus(function(){var a=b(this);a.attr("name").match(/_fakeformerizefield$/)||
+a.val()!=a.attr("placeholder")||(a.removeClass("formerize-placeholder"),a.val(""))});e.find("input[type=password]").each(function(){var a=b(this),c=b(b("<div>").append(a.clone()).remove().html().replace(/type="password"/i,'type="text"').replace(/type=password/i,"type=text"));""!=a.attr("id")&&c.attr("id",a.attr("id")+"_fakeformerizefield");""!=a.attr("name")&&c.attr("name",a.attr("name")+"_fakeformerizefield");c.addClass("formerize-placeholder").val(c.attr("placeholder")).insertAfter(a);""==a.val()?
+a.hide():c.hide();a.blur(function(a){a.preventDefault();a=b(this);var c=a.parent().find("input[name="+a.attr("name")+"_fakeformerizefield]");""==a.val()&&(a.hide(),c.show())});c.focus(function(a){a.preventDefault();a=b(this);var c=a.parent().find("input[name="+a.attr("name").replace("_fakeformerizefield","")+"]");a.hide();c.show().focus()});c.keypress(function(a){a.preventDefault();c.val("")})});e.submit(function(){b(this).find("input[type=text],input[type=password],textarea").each(function(a){a=
+b(this);a.attr("name").match(/_fakeformerizefield$/)&&a.attr("name","");a.val()==a.attr("placeholder")&&(a.removeClass("formerize-placeholder"),a.val(""))})}).bind("reset",function(a){a.preventDefault();b(this).find("select").val(b("option:first").val());b(this).find("input,textarea").each(function(){var a=b(this),d;a.removeClass("formerize-placeholder");switch(this.type){case "submit":case "reset":break;case "password":a.val(a.attr("defaultValue"));d=a.parent().find("input[name="+a.attr("name")+
+"_fakeformerizefield]");""==a.val()?(a.hide(),d.show()):(a.show(),d.hide());break;case "checkbox":case "radio":a.attr("checked",a.attr("defaultValue"));break;case "text":case "textarea":a.val(a.attr("defaultValue"));""==a.val()&&(a.addClass("formerize-placeholder"),a.val(a.attr("placeholder")));break;default:a.val(a.attr("defaultValue"))}});window.setTimeout(function(){for(x in d)d[x].trigger("formerize_sync")},10)});return e},h.n33_formerize());9>skel.vars.IEVersion&&b(":last-child").addClass("last-child");
+f.load(function(){var d=parseInt(b(".wrapper").first().css("padding-top"))-15;b("#nav a, .scrolly").scrolly(1E3,d)})})})(jQuery);
